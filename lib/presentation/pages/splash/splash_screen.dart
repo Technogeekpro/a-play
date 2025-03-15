@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:a_play_world/presentation/pages/auth/controller/auth_controller.dart';
+import 'package:video_player/video_player.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -12,30 +13,42 @@ class SplashScreen extends ConsumerStatefulWidget {
 }
 
 class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _fadeAnimation;
+  late VideoPlayerController _videoController;
+  bool _isVideoInitialized = false;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    );
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    _initializeVideo();
+  }
 
-    // Start the fade-in animation
-    _controller.forward();
-
-    // Add a small delay to ensure proper initialization
-    Timer(const Duration(seconds: 2), () {
-      _checkAuthAndNavigate();
+  Future<void> _initializeVideo() async {
+    _videoController = VideoPlayerController.asset('assets/videos/splash.mp4');
+    
+    await _videoController.initialize();
+    await _videoController.setLooping(false);
+    
+    // Set video to full screen by setting the aspect ratio
+    _videoController.setVolume(1.0);
+    
+    setState(() {
+      _isVideoInitialized = true;
+    });
+    
+    // Play the video
+    await _videoController.play();
+    
+    // Listen for video completion
+    _videoController.addListener(() {
+      if (_videoController.value.position >= _videoController.value.duration) {
+        _checkAuthAndNavigate();
+      }
     });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _videoController.dispose();
     super.dispose();
   }
 
@@ -54,29 +67,24 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-       color: Colors.black,
-      ),
-      child: Center(
-        child: FadeTransition(
-          opacity: _fadeAnimation,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/icons/app_logo.jpg',
-                fit: BoxFit.contain,
-                height: 150, // Adjust height as needed
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: _isVideoInitialized
+          ? SizedBox.expand(
+              child: FittedBox(
+                fit: BoxFit.cover,
+                child: SizedBox(
+                  width: _videoController.value.size.width,
+                  height: _videoController.value.size.height,
+                  child: VideoPlayer(_videoController),
+                ),
               ),
-              const SizedBox(height: 20),
-              const CircularProgressIndicator(
+            )
+          : const Center(
+              child: CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 } 
