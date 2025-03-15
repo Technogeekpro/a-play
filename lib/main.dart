@@ -1,5 +1,7 @@
 import 'package:a_play_world/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:a_play_world/core/config/supabase_config.dart';
 import 'package:a_play_world/core/routes/app_routes.dart';
@@ -10,9 +12,11 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await SupabaseConfig.initialize();
     
-    // Initialize location service
-    final locationService = LocationService();
-    await locationService.handleLocationPermission();
+    // Initialize location service only on mobile platforms
+    if (!kIsWeb && !Platform.isWindows && !Platform.isLinux && !Platform.isMacOS) {
+      final locationService = LocationService();
+      await locationService.handleLocationPermission();
+    }
     
     runApp(const ProviderScope(child: MyApp()));
   } catch (e) {
