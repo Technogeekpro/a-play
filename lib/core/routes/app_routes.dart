@@ -9,6 +9,7 @@ import 'package:a_play_world/core/routes/route_guard.dart';
 import 'package:a_play_world/data/models/event/event_model.dart';
 import 'package:a_play_world/presentation/pages/search/search_screen.dart';
 import 'package:a_play_world/presentation/pages/feeds/feeds_page.dart';
+import 'package:a_play_world/presentation/pages/location/location_selection_screen.dart';
 
 final goRouter = GoRouter(
   initialLocation: '/',
@@ -86,6 +87,13 @@ final goRouter = GoRouter(
       path: '/feeds',
       name: 'feeds',
       builder: (context, state) => const FeedsPage(),
+    ),
+    
+    // Location Selection Route
+    GoRoute(
+      path: '/location',
+      name: 'location',
+      builder: (context, state) => const LocationSelectionScreen(),
     ),
   ],
 ); 
