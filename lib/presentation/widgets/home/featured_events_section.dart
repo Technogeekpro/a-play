@@ -59,8 +59,8 @@ class _FeaturedEventsSectionState extends State<FeaturedEventsSection> {
     return CarouselSlider(
       carouselController: _carouselController,
       options: CarouselOptions(
-        height: 360,
-        viewportFraction: 0.86,
+        height: 350,
+        viewportFraction: 0.80,
         enlargeCenterPage: true,
         enlargeFactor: 0.2,
         enableInfiniteScroll: true,

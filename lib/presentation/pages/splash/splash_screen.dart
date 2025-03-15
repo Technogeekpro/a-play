@@ -11,14 +11,32 @@ class SplashScreen extends ConsumerStatefulWidget {
   ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends ConsumerState<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+
   @override
   void initState() {
     super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+
+    // Start the fade-in animation
+    _controller.forward();
+
     // Add a small delay to ensure proper initialization
     Timer(const Duration(seconds: 2), () {
       _checkAuthAndNavigate();
     });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   void _checkAuthAndNavigate() {
@@ -36,11 +54,32 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Full Screen Splash Screen with centered image and background color
     return Container(
-      color: const Color(0xFF050B17), // Background color
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.black, Colors.black54], // Black gradient
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
       child: Center(
-        child: Image.asset('assets/images/splash.png', fit: BoxFit.contain), // Centered image
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/icons/app_logo.jpg',
+                fit: BoxFit.contain,
+                height: 150, // Adjust height as needed
+              ),
+              const SizedBox(height: 20),
+              const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

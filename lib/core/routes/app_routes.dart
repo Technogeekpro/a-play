@@ -8,6 +8,7 @@ import 'package:a_play_world/presentation/pages/events/checkout/booking_success_
 import 'package:a_play_world/core/routes/route_guard.dart';
 import 'package:a_play_world/data/models/event/event_model.dart';
 import 'package:a_play_world/presentation/pages/search/search_screen.dart';
+import 'package:a_play_world/presentation/pages/feeds/feeds_page.dart';
 
 final goRouter = GoRouter(
   initialLocation: '/',
@@ -78,6 +79,13 @@ final goRouter = GoRouter(
       path: '/search',
       name: 'search',
       builder: (context, state) => const SearchScreen(),
+    ),
+
+    // Feeds Route
+    GoRoute(
+      path: '/feeds',
+      name: 'feeds',
+      builder: (context, state) => const FeedsPage(),
     ),
   ],
 ); 

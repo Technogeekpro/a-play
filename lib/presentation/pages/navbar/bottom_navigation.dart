@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:a_play_world/presentation/pages/bookings/screens/bookings_page.dart';
 import 'package:a_play_world/presentation/pages/explore/screens/explore_page.dart';
 import 'package:a_play_world/presentation/pages/home/home_page.dart';
-import 'package:a_play_world/presentation/pages/profile/screens/profile_page.dart';
+import 'package:a_play_world/presentation/pages/feeds/feeds_page.dart';
 
 final navigationIndexProvider = StateProvider<int>((ref) => 0);
 
@@ -20,7 +20,7 @@ class _BottomNavigationState extends ConsumerState<BottomNavigation> {
     const HomePage(),
     const ExplorePage(),
     const BookingsPage(),
-    const ProfilePage(),
+    const FeedsPage(),
   ];
 
   @override
@@ -78,9 +78,9 @@ class _BottomNavigationState extends ConsumerState<BottomNavigation> {
                         onTap: () => ref.read(navigationIndexProvider.notifier).state = 2,
                       ),
                       _NavBarItem(
-                        icon: Iconsax.profile_circle,
-                        selectedIcon: Iconsax.profile_circle5,
-                        label: 'Profile',
+                        icon: Iconsax.message,
+                        selectedIcon: Iconsax.message5,
+                        label: 'Feeds',
                         isSelected: currentIndex == 3,
                         onTap: () => ref.read(navigationIndexProvider.notifier).state = 3,
                       ),

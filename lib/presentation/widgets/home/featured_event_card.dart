@@ -24,24 +24,30 @@ class FeaturedEventCard extends StatelessWidget {
         ),
         child: UIHelpers.addGradientOverlay(
           borderRadius: BorderRadius.circular(16),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: CachedNetworkImage(
-              imageUrl: event.imageUrl ?? '',
-              height: 360,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              placeholder: (context, url) => Container(
-                color: Colors.grey[800],
-                child: const Center(
-                  child: CircularProgressIndicator(color: Colors.white),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Event Image
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: CachedNetworkImage(
+                  imageUrl: event.imageUrl ?? '',
+                  height: 350,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => Container(
+                    color: Colors.grey[800],
+                    child: const Center(
+                      child: CircularProgressIndicator(color: Colors.white),
+                    ),
+                  ),
+                  errorWidget: (context, url, error) => Container(
+                    color: Colors.grey[800],
+                    child: const Icon(Icons.error, color: Colors.white),
+                  ),
                 ),
               ),
-              errorWidget: (context, url, error) => Container(
-                color: Colors.grey[800],
-                child: const Icon(Icons.error, color: Colors.white),
-              ),
-            ),
+            ],
           ),
         ),
       ),
