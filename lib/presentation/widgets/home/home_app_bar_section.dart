@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:a_play_world/core/theme/app_colors.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class HomeAppBarSection extends StatelessWidget {
   const HomeAppBarSection({Key? key}) : super(key: key);
@@ -13,11 +15,10 @@ class HomeAppBarSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // App Logo in svg
-
           GestureDetector(
             onTap: () {
-              //Navigate to profile page
-              Navigator.pushNamed(context, '/profile');
+              // Navigate to profile page using go_router
+              context.push('/profile');
             },
             child: SvgPicture.asset(
               'assets/images/app_logo.svg',
@@ -25,26 +26,40 @@ class HomeAppBarSection extends StatelessWidget {
             ),
           ),
 
-          // Profile Avatar
-          GestureDetector(
-            onTap: () {
-              // Navigate to profile or open menu
-            },
-            child: Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                color: AppColors.background,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: AppColors.primaryColor.withOpacity(0.5),
-                  width: 2,
+          // Location display
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: Colors.white.withOpacity(0.2),
+                width: 1,
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  PhosphorIconsLight.mapPin,
+                  color: Colors.white,
+                  size: 16,
                 ),
-              ),
-              child: const Icon(
-                Icons.person,
-                color: AppColors.primaryColor,
-              ),
+                const SizedBox(width: 4),
+                Text(
+                  'Current Location',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(width: 2),
+                const Icon(
+                  PhosphorIconsLight.caretDown,
+                  color: Colors.white,
+                  size: 12,
+                ),
+              ],
             ),
           ),
         ],
