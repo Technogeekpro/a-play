@@ -56,11 +56,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with SingleTickerPr
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.black, Colors.black54], // Black gradient
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+       color: Colors.black,
       ),
       child: Center(
         child: FadeTransition(
