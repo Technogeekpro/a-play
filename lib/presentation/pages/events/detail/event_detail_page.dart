@@ -37,7 +37,7 @@ class EventDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Theme.of(context).colorScheme.surface,
+       backgroundColor: const Color(0xFF121212),
       appBar: _buildGlassmorphicAppBar(context),
       body: Stack(
         children: [
