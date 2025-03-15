@@ -1,24 +1,10 @@
 {
   "version": 2,
   "public": true,
-  "builds": [
-    {
-      "src": "build/web/**",
-      "use": "@vercel/static"
-    }
-  ],
+  "buildCommand": "chmod +x vercel-build.sh && ./vercel-build.sh",
+  "outputDirectory": "build/web",
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/build/web/$1"
-    },
-    {
-      "src": "/(.*\\.[a-z0-9]+)$",
-      "dest": "/build/web/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/build/web/index.html"
-    }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 } 
