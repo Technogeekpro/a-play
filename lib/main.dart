@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:a_play_world/core/config/supabase_config.dart';
-import 'package:a_play_world/presentation/routes/app_routes.dart';
-import 'package:a_play_world/presentation/theme/app_theme.dart';
+import 'package:a_play_world/core/routes/app_routes.dart';
+import 'package:a_play_world/core/theme/app_theme.dart';
+import 'package:a_play_world/core/services/location_service.dart';
 
 Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
     await SupabaseConfig.initialize();
+    
+    // Initialize location service
+    final locationService = LocationService();
+    await locationService.requestLocationPermission();
+    
     runApp(const ProviderScope(child: MyApp()));
   } catch (e) {
     debugPrint('Error initializing app: $e');
@@ -35,7 +41,7 @@ class MyApp extends StatelessWidget {
       title: 'A Play World',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      routerConfig: router,
+      routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
     );
   }
