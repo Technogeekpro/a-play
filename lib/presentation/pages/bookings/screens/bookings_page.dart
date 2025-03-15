@@ -85,7 +85,7 @@ class _BookingsPageState extends ConsumerState<BookingsPage> with SingleTickerPr
               // Upcoming Bookings
               _buildBookingsList(upcomingBookings, isUpcoming: true),
               
-              // Past Bookings
+              // Past Bookings as
               _buildBookingsList(pastBookings, isUpcoming: false),
             ],
           );
