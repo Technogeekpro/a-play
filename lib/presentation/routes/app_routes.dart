@@ -2,6 +2,7 @@ import 'package:a_play_world/data/models/event/event_model.dart';
 import 'package:a_play_world/presentation/pages/auth/signup.dart';
 import 'package:a_play_world/presentation/pages/home/screens/search_screen.dart';
 import 'package:a_play_world/presentation/pages/navbar/bottom_navigation.dart';
+import 'package:a_play_world/presentation/pages/profile/screens/profile_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:a_play_world/presentation/pages/home/home_page.dart';
 import 'package:a_play_world/presentation/pages/auth/login_page.dart';
@@ -47,6 +48,11 @@ final GoRouter router = GoRouter(
       path: '/signup',
       name: 'signup',
       builder: (context, state) => const SignupPage(),
+    ),
+    GoRoute(
+      path: '/profile',
+      name: 'profile',
+      builder: (context, state) => const ProfilePage(),
     ),
     GoRoute(
       path: '/event/:id',

@@ -14,7 +14,16 @@ class HomeAppBarSection extends StatelessWidget {
         children: [
           // App Logo in svg
 
-          SvgPicture.asset('assets/images/app_logo.svg', height: 35,),
+          GestureDetector(
+            onTap: () {
+              //Navigate to profile page
+              Navigator.pushNamed(context, '/profile');
+            },
+            child: SvgPicture.asset(
+              'assets/images/app_logo.svg',
+              height: 35,
+            ),
+          ),
 
           // Profile Avatar
           GestureDetector(
@@ -32,7 +41,7 @@ class HomeAppBarSection extends StatelessWidget {
                   width: 2,
                 ),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.person,
                 color: AppColors.primaryColor,
               ),
