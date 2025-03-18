@@ -1,10 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/presentation/pages/home/controller/home_controller.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/presentation/pages/home/controller/home_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 class FeedsPage extends ConsumerStatefulWidget {
@@ -317,9 +318,7 @@ class _FeedEventCardState extends State<FeedEventCard> {
                     const SizedBox(height: 4),
                     Text(
                       'Join us for an amazing event! Tickets start at GH₵ ${widget.event.price.toStringAsFixed(2)}',
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.9),
-                      ),
+                      style: GoogleFonts.inter(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
+import 'package:a_play/data/models/event/event_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 final exploreControllerProvider = StateNotifierProvider<ExploreController, ExploreState>((ref) {

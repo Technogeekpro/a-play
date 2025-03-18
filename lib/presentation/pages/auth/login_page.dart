@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:a_play_world/presentation/pages/auth/controller/auth_controller.dart';
-import 'package:a_play_world/core/errors/auth_exceptions.dart' as app_auth;
+import 'package:a_play/presentation/pages/auth/controller/auth_controller.dart';
+import 'package:a_play/core/errors/auth_exceptions.dart' as app_auth;
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});

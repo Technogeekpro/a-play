@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:a_play_world/presentation/pages/auth/controller/auth_controller.dart';
+import 'package:a_play/presentation/pages/auth/controller/auth_controller.dart';
 import 'package:video_player/video_player.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {

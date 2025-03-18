@@ -1,11 +1,11 @@
-import 'package:a_play_world/presentation/theme/app_theme.dart';
+import 'package:a_play/presentation/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/core/config/supabase_config.dart';
-import 'package:a_play_world/core/routes/app_routes.dart';
-import 'package:a_play_world/core/services/location_service.dart';
+import 'package:a_play/core/config/supabase_config.dart';
+import 'package:a_play/core/routes/app_routes.dart';
+import 'package:a_play/core/services/location_service.dart';
 
 Future<void> main() async {
   try {

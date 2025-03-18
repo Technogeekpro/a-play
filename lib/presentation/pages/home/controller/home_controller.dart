@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/data/models/ticket/ticket_model.dart';
-import 'package:a_play_world/core/config/supabase_config.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/data/models/ticket/ticket_model.dart';
+import 'package:a_play/core/config/supabase_config.dart';
 
 /// Provider for categories
 final categoriesProvider = FutureProvider<List<Map<String, dynamic>>>((ref) async {

@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:a_play_world/presentation/theme/app_theme.dart';
+import 'package:a_play/presentation/theme/app_theme.dart';
 
 class CosmicBackground extends StatelessWidget {
   final Widget child;

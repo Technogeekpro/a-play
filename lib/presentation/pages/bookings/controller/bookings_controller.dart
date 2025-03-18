@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/data/models/booking/booking_model.dart';
-import 'package:a_play_world/core/config/supabase_config.dart';
+import 'package:a_play/data/models/booking/booking_model.dart';
+import 'package:a_play/core/config/supabase_config.dart';
 import 'package:flutter/foundation.dart';
 
 class BookingException implements Exception {

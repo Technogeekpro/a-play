@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
+import 'package:a_play/data/models/event/event_model.dart';
 
 part 'booking_model.g.dart';
 

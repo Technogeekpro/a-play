@@ -1,8 +1,8 @@
-import 'package:a_play_world/presentation/pages/explore/controller/explore_page_controller.dart';
+import 'package:a_play/presentation/pages/explore/controller/explore_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/presentation/pages/home/controller/home_controller.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/presentation/pages/home/controller/home_controller.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:iconsax/iconsax.dart';

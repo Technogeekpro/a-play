@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/data/models/ticket/ticket_model.dart';
-import 'package:a_play_world/presentation/pages/events/checkout/controller/checkout_controller.dart';
-import 'package:a_play_world/presentation/pages/auth/controller/auth_controller.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/data/models/ticket/ticket_model.dart';
+import 'package:a_play/presentation/pages/events/checkout/controller/checkout_controller.dart';
+import 'package:a_play/presentation/pages/auth/controller/auth_controller.dart';
 
 class CheckoutPage extends ConsumerStatefulWidget {
   final EventModel event;
@@ -52,12 +52,16 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
           // Show error snackbar
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(current.error!),
+
+              content: Text(current.error!,style: const TextStyle(
+                color: Colors.white
+              ),),
               backgroundColor: Theme.of(context).colorScheme.error,
+
               duration: const Duration(seconds: 5),
               action: SnackBarAction(
                 label: 'Retry',
-                textColor: Theme.of(context).colorScheme.onError,
+                textColor: Colors.black,
                 onPressed: () {
                   if (user != null) {
                     ref

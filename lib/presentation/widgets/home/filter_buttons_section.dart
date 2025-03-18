@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:a_play_world/core/theme/app_text_styles.dart';
+import 'package:a_play/core/theme/app_text_styles.dart';
 
 class FilterButtonsSection extends StatelessWidget {
   final List<String> filterOptions;

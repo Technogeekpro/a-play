@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:a_play_world/presentation/pages/bookings/widgets/booking_card.dart';
-import 'package:a_play_world/presentation/pages/bookings/controller/bookings_controller.dart';
+import 'package:a_play/presentation/pages/bookings/widgets/booking_card.dart';
+import 'package:a_play/presentation/pages/bookings/controller/bookings_controller.dart';
 
 class BookingsPage extends ConsumerStatefulWidget {
   const BookingsPage({super.key});

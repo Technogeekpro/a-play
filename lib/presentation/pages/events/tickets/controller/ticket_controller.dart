@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
-import 'package:a_play_world/data/models/ticket/ticket_model.dart';
-import 'package:a_play_world/core/config/supabase_config.dart';
+import 'package:a_play/data/models/ticket/ticket_model.dart';
+import 'package:a_play/core/config/supabase_config.dart';
 
 /// Provider for the ticket controller
 final ticketControllerProvider = StateNotifierProvider<TicketController, AsyncValue<List<TicketModel>>>((ref) {

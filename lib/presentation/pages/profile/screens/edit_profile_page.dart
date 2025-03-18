@@ -2,9 +2,9 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:a_play_world/data/models/user/user_model.dart';
-import 'package:a_play_world/presentation/pages/profile/controller/user_controller.dart';
-import 'package:a_play_world/core/config/supabase_config.dart';
+import 'package:a_play/data/models/user/user_model.dart';
+import 'package:a_play/presentation/pages/profile/controller/user_controller.dart';
+import 'package:a_play/core/config/supabase_config.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class EditProfilePage extends ConsumerStatefulWidget {

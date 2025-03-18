@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:a_play_world/core/config/supabase_config.dart';
-import 'package:a_play_world/core/errors/auth_exceptions.dart' as app_auth;
+import 'package:a_play/core/config/supabase_config.dart';
+import 'package:a_play/core/errors/auth_exceptions.dart' as app_auth;
 
 final authControllerProvider = StateNotifierProvider<AuthController, AsyncValue<User?>>((ref) {
   return AuthController(SupabaseConfig.client);

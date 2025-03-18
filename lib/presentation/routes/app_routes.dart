@@ -1,19 +1,19 @@
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/presentation/pages/auth/signup.dart';
-import 'package:a_play_world/presentation/pages/home/screens/search_screen.dart';
-import 'package:a_play_world/presentation/pages/navbar/bottom_navigation.dart';
-import 'package:a_play_world/presentation/pages/profile/screens/profile_page.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/presentation/pages/auth/signup.dart';
+import 'package:a_play/presentation/pages/navbar/bottom_navigation.dart';
+import 'package:a_play/presentation/pages/profile/screens/profile_page.dart';
+import 'package:a_play/presentation/pages/search/search_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:a_play_world/presentation/pages/home/home_page.dart';
-import 'package:a_play_world/presentation/pages/auth/login_page.dart';
-import 'package:a_play_world/presentation/pages/events/detail/event_detail_page.dart';
-import 'package:a_play_world/presentation/pages/events/tickets/ticket_selection_page.dart';
-import 'package:a_play_world/presentation/pages/events/checkout/checkout_page.dart';
-import 'package:a_play_world/presentation/pages/events/checkout/booking_success_page.dart';
-import 'package:a_play_world/presentation/routes/route_guard.dart';
-import 'package:a_play_world/presentation/pages/splash/splash_screen.dart';
-import 'package:a_play_world/presentation/pages/bookings/screens/bookings_page.dart';
-import 'package:a_play_world/presentation/pages/home/screens/category_events_page.dart';
+import 'package:a_play/presentation/pages/home/home_page.dart';
+import 'package:a_play/presentation/pages/auth/login_page.dart';
+import 'package:a_play/presentation/pages/events/detail/event_detail_page.dart';
+import 'package:a_play/presentation/pages/events/tickets/ticket_selection_page.dart';
+import 'package:a_play/presentation/pages/events/checkout/checkout_page.dart';
+import 'package:a_play/presentation/pages/events/checkout/booking_success_page.dart';
+import 'package:a_play/presentation/routes/route_guard.dart';
+import 'package:a_play/presentation/pages/splash/splash_screen.dart';
+import 'package:a_play/presentation/pages/bookings/screens/bookings_page.dart';
+import 'package:a_play/presentation/pages/home/screens/category_events_page.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/splash',

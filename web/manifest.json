@@ -1,6 +1,6 @@
 {
-    "name": "a_play_world",
-    "short_name": "a_play_world",
+    "name": "a_play",
+    "short_name": "a_play",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

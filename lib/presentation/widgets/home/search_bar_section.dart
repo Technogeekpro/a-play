@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:a_play_world/core/theme/app_text_styles.dart';
-import 'package:a_play_world/core/theme/app_colors.dart';
+import 'package:a_play/core/theme/app_text_styles.dart';
+import 'package:a_play/core/theme/app_colors.dart';
 import 'package:iconsax/iconsax.dart';
 
 /// Search bar widget for the home page
@@ -43,7 +43,7 @@ class SearchBarSection extends StatelessWidget {
                     color: AppColors.primaryColor,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Iconsax.filter_tick,
                     color: Colors.white,
                     size: 16,

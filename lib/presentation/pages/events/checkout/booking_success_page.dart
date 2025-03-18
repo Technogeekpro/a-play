@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
+import 'package:a_play/data/models/event/event_model.dart';
 
 class BookingSuccessPage extends StatelessWidget {
   final EventModel event;

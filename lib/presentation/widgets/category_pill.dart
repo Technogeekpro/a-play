@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:a_play_world/presentation/theme/app_theme.dart';
+import 'package:a_play/presentation/theme/app_theme.dart';
 
 class CategoryPill extends StatelessWidget {
   final String title;

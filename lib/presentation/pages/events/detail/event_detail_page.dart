@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
+import 'package:a_play/data/models/event/event_model.dart';
 
 class EventDetailPage extends ConsumerWidget {
   final EventModel event;
@@ -82,22 +83,19 @@ class EventDetailPage extends ConsumerWidget {
                   ),
                 ),
 
-                // Event Title with Hero
+                // Event Title
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Hero(
-                    tag: 'event-title-${event.id}',
-                    child: Material(
-                      color: Colors.transparent,
-                      child: Text(
-                        event.title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium
-                            ?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: Text(
+                      event.title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium
+                          ?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                   ),
                 ),
@@ -198,16 +196,17 @@ class EventDetailPage extends ConsumerWidget {
                           children: [
                             Text(
                               'Starting from',
-                              style: Theme.of(context).textTheme.bodyMedium,
+                              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                color: Colors.grey
+                              ),
                             ),
                             Text(
-                              'GH₵${event.price.toStringAsFixed(2)}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              'GH₵ ${event.price.toStringAsFixed(2)}',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.white
+                              )
                             ),
                           ],
                         ),
@@ -217,18 +216,19 @@ class EventDetailPage extends ConsumerWidget {
                           context.pushNamed(
                             'ticket-selection',
                             pathParameters: {'eventId': event.id},
-                            extra: event.toJson(),
+                            extra: event, // Pass the EventModel directly
                           );
                         },
                         style: FilledButton.styleFrom(
                           minimumSize: const Size(200, 48),
                         ),
-                        child: const Text('Get Tickets'
-                         ,style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                         ),
+                        child: const Text(
+                          'Get Tickets',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ],
@@ -238,6 +238,47 @@ class EventDetailPage extends ConsumerWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// Helper widget to redirect to ticket selection without hero animation conflicts
+class _TicketSelectionRedirect extends StatefulWidget {
+  final String eventId;
+  final Map<String, dynamic> eventJson;
+  
+  const _TicketSelectionRedirect({
+    required this.eventId,
+    required this.eventJson,
+  });
+  
+  @override
+  State<_TicketSelectionRedirect> createState() => _TicketSelectionRedirectState();
+}
+
+class _TicketSelectionRedirectState extends State<_TicketSelectionRedirect> {
+  @override
+  void initState() {
+    super.initState();
+    // Use a microtask to ensure the navigation happens after the current frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.pushReplacementNamed(
+          'ticket-selection',
+          pathParameters: {'eventId': widget.eventId},
+          extra: widget.eventJson,
+        );
+      }
+    });
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: const Center(
+        child: CircularProgressIndicator(),
       ),
     );
   }

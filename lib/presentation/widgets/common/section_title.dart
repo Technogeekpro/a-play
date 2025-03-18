@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:a_play_world/core/theme/app_text_styles.dart';
+import 'package:a_play/core/theme/app_text_styles.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
@@ -21,7 +21,7 @@ class SectionTitle extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 right: 16
               ),
               height: 1,
@@ -40,7 +40,7 @@ class SectionTitle extends StatelessWidget {
           ),
            Expanded(
             child: Container(
-              margin: EdgeInsets.only(
+              margin: const EdgeInsets.only(
                 left: 16
               ),
               height: 1,

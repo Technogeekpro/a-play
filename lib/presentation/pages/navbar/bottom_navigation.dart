@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:a_play_world/presentation/pages/bookings/screens/bookings_page.dart';
-import 'package:a_play_world/presentation/pages/explore/screens/explore_page.dart';
-import 'package:a_play_world/presentation/pages/home/home_page.dart';
-import 'package:a_play_world/presentation/pages/feeds/feeds_page.dart';
+import 'package:a_play/presentation/pages/bookings/screens/bookings_page.dart';
+import 'package:a_play/presentation/pages/explore/screens/explore_page.dart';
+import 'package:a_play/presentation/pages/home/home_page.dart';
+import 'package:a_play/presentation/pages/feeds/feeds_page.dart';
 
 final navigationIndexProvider = StateProvider<int>((ref) => 0);
 

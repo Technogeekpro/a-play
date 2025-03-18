@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/data/models/ticket/ticket_model.dart';
-import 'package:a_play_world/core/config/supabase_config.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/data/models/ticket/ticket_model.dart';
+import 'package:a_play/core/config/supabase_config.dart';
 import 'package:pay_with_paystack/pay_with_paystack.dart';
 import 'package:flutter/material.dart';
 
@@ -107,6 +107,26 @@ class CheckoutController extends StateNotifier<CheckoutState> {
       if (user == null) throw Exception('User not found');
       if (user.email == null) throw Exception('User email is required for payment');
 
+      // Check if user exists in the users table
+      final userResponse = await SupabaseConfig.client
+          .from('users')
+          .select('id')
+          .eq('id', userId)
+          .maybeSingle();
+
+      // If user doesn't exist, create the user record
+      if (userResponse == null) {
+        debugPrint('User not found in users table. Creating user record.');
+        await SupabaseConfig.client.from('users').insert({
+          'id': userId,
+          'email': user.email,
+          'full_name': user.userMetadata?['full_name'] ?? 'Unknown',
+          'created_at': DateTime.now().toIso8601String(),
+          'updated_at': DateTime.now().toIso8601String(),
+        });
+        debugPrint('User record created successfully.');
+      }
+
       // Generate a unique booking reference
       final bookingReference = 'BK${DateTime.now().millisecondsSinceEpoch}';
 
@@ -135,7 +155,7 @@ class CheckoutController extends StateNotifier<CheckoutState> {
           };
         }).toList(),
       };
-
+      
       // Insert the booking and get the response
       final response = await SupabaseConfig.client
           .from('bookings')

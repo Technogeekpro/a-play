@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:a_play_world/data/models/booking/booking_model.dart';
+import 'package:a_play/data/models/booking/booking_model.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class BookingCard extends StatelessWidget {

@@ -1,10 +1,10 @@
-import 'package:a_play_world/presentation/pages/auth/controller/auth_controller.dart';
-import 'package:a_play_world/presentation/pages/profile/screens/contact_us_page.dart';
-import 'package:a_play_world/presentation/pages/profile/screens/help_support_page.dart';
+import 'package:a_play/presentation/pages/auth/controller/auth_controller.dart';
+import 'package:a_play/presentation/pages/profile/screens/contact_us_page.dart';
+import 'package:a_play/presentation/pages/profile/screens/help_support_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/presentation/pages/profile/controller/user_controller.dart';
-import 'package:a_play_world/presentation/pages/profile/screens/edit_profile_page.dart';
+import 'package:a_play/presentation/pages/profile/controller/user_controller.dart';
+import 'package:a_play/presentation/pages/profile/screens/edit_profile_page.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfilePage extends ConsumerWidget {

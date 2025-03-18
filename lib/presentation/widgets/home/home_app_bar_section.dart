@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/core/services/location_service.dart';
+import 'package:a_play/core/services/location_service.dart';
 
 class HomeAppBarSection extends ConsumerWidget {
   const HomeAppBarSection({Key? key}) : super(key: key);

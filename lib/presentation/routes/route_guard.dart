@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:a_play_world/core/config/supabase_config.dart';
+import 'package:a_play/core/config/supabase_config.dart';
 
 class RouteGuard extends GoRouteData {
   static String? redirectIfNotAuthenticated(BuildContext context, GoRouterState state) {

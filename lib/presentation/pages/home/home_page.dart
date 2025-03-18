@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';// Controller
-import 'package:a_play_world/presentation/pages/home/controller/home_controller.dart';// Model // Widgets
-import 'package:a_play_world/presentation/widgets/home/home_app_bar_section.dart';
-import 'package:a_play_world/presentation/widgets/home/search_bar_section.dart';
-import 'package:a_play_world/presentation/widgets/home/featured_events_section.dart';
-import 'package:a_play_world/presentation/widgets/home/filter_buttons_section.dart';
-import 'package:a_play_world/presentation/widgets/home/all_events_section.dart';
-import 'package:a_play_world/presentation/widgets/common/section_title.dart';
+import 'package:a_play/presentation/pages/home/controller/home_controller.dart';// Model // Widgets
+import 'package:a_play/presentation/widgets/home/home_app_bar_section.dart';
+import 'package:a_play/presentation/widgets/home/search_bar_section.dart';
+import 'package:a_play/presentation/widgets/home/featured_events_section.dart';
+import 'package:a_play/presentation/widgets/home/filter_buttons_section.dart';
+import 'package:a_play/presentation/widgets/home/all_events_section.dart';
+import 'package:a_play/presentation/widgets/common/section_title.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});

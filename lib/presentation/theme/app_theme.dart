@@ -15,7 +15,7 @@ class AppTheme {
 
   // Surface colors
   static const Color surfaceDark = Color.fromARGB(255, 0, 0, 0);
-  static const Color surfaceMedium = Color.fromARGB(15, 0, 0, 0);
+  static const Color surfaceMedium = Color.fromARGB(15, 255, 38, 38);
   static const Color surfaceLight = Color(0xFF2A1F3D);
 
   // Text colors
@@ -52,10 +52,10 @@ class AppTheme {
       cardTheme: CardTheme(
         color: surfaceMedium,
         elevation: 4,
-        shadowColor: primaryPurple.withOpacity(0.2),
+       // shadowColor: primaryPurple.withOpacity(0.2),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: const BorderSide(color: surfaceLight, width: 1),
+          //side: const BorderSide(color: surfaceLight, width: 1),
         ),
       ),
 

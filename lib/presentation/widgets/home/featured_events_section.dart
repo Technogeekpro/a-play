@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
-import 'package:a_play_world/core/theme/app_text_styles.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/presentation/widgets/home/featured_event_card.dart';
+import 'package:a_play/core/theme/app_text_styles.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/presentation/widgets/home/featured_event_card.dart';
 
 class FeaturedEventsSection extends StatefulWidget {
   final List<EventModel> events;

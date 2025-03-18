@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/core/utils/ui_helpers.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/core/utils/ui_helpers.dart';
 
 class FeaturedEventCard extends StatelessWidget {
   final EventModel event;
@@ -22,32 +22,23 @@ class FeaturedEventCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
         ),
-        child: UIHelpers.addGradientOverlay(
+        child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Event Image
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: CachedNetworkImage(
-                  imageUrl: event.imageUrl ?? '',
-                  height: 350,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => Container(
-                    color: Colors.grey[800],
-                    child: const Center(
-                      child: CircularProgressIndicator(color: Colors.white),
-                    ),
-                  ),
-                  errorWidget: (context, url, error) => Container(
-                    color: Colors.grey[800],
-                    child: const Icon(Icons.error, color: Colors.white),
-                  ),
-                ),
+          child: CachedNetworkImage(
+            imageUrl: event.imageUrl ?? '',
+            height: 320,
+            width: double.infinity,
+            fit: BoxFit.cover,
+            placeholder: (context, url) => Container(
+              color: Colors.grey[800],
+              child: const Center(
+                child: CircularProgressIndicator(color: Colors.white),
               ),
-            ],
+            ),
+            errorWidget: (context, url, error) => Container(
+              color: Colors.grey[800],
+              child: const Icon(Icons.error, color: Colors.white),
+            ),
           ),
         ),
       ),

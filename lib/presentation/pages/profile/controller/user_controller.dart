@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:a_play_world/data/models/user/user_model.dart';
-import 'package:a_play_world/data/repositories/user_repository.dart';
+import 'package:a_play/data/models/user/user_model.dart';
+import 'package:a_play/data/repositories/user_repository.dart';
 
 final userControllerProvider = StateNotifierProvider<UserController, AsyncValue<UserModel?>>((ref) {
   return UserController(ref.read(userRepositoryProvider));

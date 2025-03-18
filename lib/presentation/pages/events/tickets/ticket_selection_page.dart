@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:a_play_world/data/models/event/event_model.dart';
-import 'package:a_play_world/data/models/ticket/ticket_model.dart';
-import 'package:a_play_world/presentation/pages/events/tickets/controller/ticket_controller.dart';
+import 'package:a_play/data/models/event/event_model.dart';
+import 'package:a_play/data/models/ticket/ticket_model.dart';
+import 'package:a_play/presentation/pages/events/tickets/controller/ticket_controller.dart';
 
 part 'widgets/event_info_card.dart';
 part 'widgets/ticket_card.dart';
@@ -128,21 +128,36 @@ class _TicketSelectionPageState extends ConsumerState<TicketSelectionPage> {
     setState(() => _isProcessing = true);
 
     try {
-      final selectedTicketDetails = selectedTickets.entries.map((entry) {
+      // Create a list of maps with ticket details
+      final List<Map<String, dynamic>> selectedTicketDetails = [];
+      
+      for (final entry in selectedTickets.entries) {
         final ticket = tickets.firstWhere((t) => t.id == entry.key);
-        return {
+        selectedTicketDetails.add({
           'ticket': ticket,
           'quantity': entry.value,
-        };
-      }).toList();
+          'subtotal': ticket.price * entry.value,
+        });
+      }
 
       if (mounted) {
+        // Navigate to checkout page with selected tickets
         context.pushNamed(
           'checkout',
           extra: {
             'event': widget.event,
-            'selectedTickets': selectedTicketDetails,
+            'tickets': selectedTicketDetails,
           },
+        );
+      }
+    } catch (e) {
+      // Show error snackbar if something goes wrong
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: ${e.toString()}'),
+            backgroundColor: Colors.red,
+          ),
         );
       }
     } finally {

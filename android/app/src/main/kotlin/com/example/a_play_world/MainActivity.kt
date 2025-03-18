@@ -1,4 +1,4 @@
-package com.example.a_play_world
+package com.example.a_play
 
 import io.flutter.embedding.android.FlutterActivity
 
