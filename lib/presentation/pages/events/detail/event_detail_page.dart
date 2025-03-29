@@ -52,31 +52,70 @@ class EventDetailPage extends ConsumerWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Center(
                     child: Hero(
-                      tag: 'event-image-${event.id}',
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.4,
-                          child: event.imageUrl != null
-                              ? CachedNetworkImage(
-                                  imageUrl: event.imageUrl!,
-                                  fit: BoxFit.cover,
-                                  placeholder: (context, url) =>
-                                      Shimmer.fromColors(
-                                    baseColor: Colors.grey[300]!,
-                                    highlightColor: Colors.grey[100]!,
-                                    child: Container(color: Colors.white),
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      const Center(child: Icon(Icons.error)),
-                                )
-                              : Container(
-                                  color: Colors.grey[300],
-                                  child: const Center(
-                                    child: Icon(Icons.event, size: 48),
-                                  ),
+                      tag: 'featured-event-${event.id}',
+                      flightShuttleBuilder: (flightContext, animation, direction, fromContext, toContext) {
+                        return AnimatedBuilder(
+                          animation: animation,
+                          builder: (context, child) {
+                            return Material(
+                              color: Colors.transparent,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: SizedBox(
+                                  width: MediaQuery.of(context).size.width * 0.8,
+                                  height: MediaQuery.of(context).size.height * 0.4,
+                                  child: event.imageUrl != null
+                                      ? CachedNetworkImage(
+                                          imageUrl: event.imageUrl!,
+                                          fit: BoxFit.cover,
+                                          placeholder: (context, url) =>
+                                              Shimmer.fromColors(
+                                            baseColor: Colors.grey[300]!,
+                                            highlightColor: Colors.grey[100]!,
+                                            child: Container(color: Colors.white),
+                                          ),
+                                          errorWidget: (context, url, error) =>
+                                              const Center(child: Icon(Icons.error)),
+                                        )
+                                      : Container(
+                                          color: Colors.grey[300],
+                                          child: const Center(
+                                            child: Icon(Icons.event, size: 48),
+                                          ),
+                                        ),
                                 ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: Material(
+                        color: Colors.transparent,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            child: event.imageUrl != null
+                                ? CachedNetworkImage(
+                                    imageUrl: event.imageUrl!,
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) =>
+                                        Shimmer.fromColors(
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(color: Colors.white),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        const Center(child: Icon(Icons.error)),
+                                  )
+                                : Container(
+                                    color: Colors.grey[300],
+                                    child: const Center(
+                                      child: Icon(Icons.event, size: 48),
+                                    ),
+                                  ),
+                          ),
                         ),
                       ),
                     ),

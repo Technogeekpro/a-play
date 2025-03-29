@@ -22,22 +22,54 @@ class FeaturedEventCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: CachedNetworkImage(
-            imageUrl: event.imageUrl ?? '',
-            height: 320,
-            width: double.infinity,
-            fit: BoxFit.cover,
-            placeholder: (context, url) => Container(
-              color: Colors.grey[800],
-              child: const Center(
-                child: CircularProgressIndicator(color: Colors.white),
+        child: Hero(
+          tag: 'featured-event-${event.id}',
+          flightShuttleBuilder: (flightContext, animation, direction, fromContext, toContext) {
+            return AnimatedBuilder(
+              animation: animation,
+              builder: (context, child) {
+                return Material(
+                  color: Colors.transparent,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: CachedNetworkImage(
+                      imageUrl: event.imageUrl ?? '',
+                      height: 320,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Container(
+                        color: Colors.grey[800],
+                        child: const Center(
+                          child: CircularProgressIndicator(color: Colors.white),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        color: Colors.grey[800],
+                        child: const Icon(Icons.error, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: CachedNetworkImage(
+              imageUrl: event.imageUrl ?? '',
+              height: 320,
+              width: double.infinity,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => Container(
+                color: Colors.grey[800],
+                child: const Center(
+                  child: CircularProgressIndicator(color: Colors.white),
+                ),
               ),
-            ),
-            errorWidget: (context, url, error) => Container(
-              color: Colors.grey[800],
-              child: const Icon(Icons.error, color: Colors.white),
+              errorWidget: (context, url, error) => Container(
+                color: Colors.grey[800],
+                child: const Icon(Icons.error, color: Colors.white),
+              ),
             ),
           ),
         ),

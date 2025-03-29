@@ -1,3 +1,4 @@
+import 'package:a_play/presentation/pages/podcast/screens/podcast_screen.dart';
 import 'package:a_play/presentation/pages/profile/screens/profile_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:a_play/presentation/pages/auth/login_page.dart';
@@ -113,6 +114,12 @@ final goRouter = GoRouter(
       path: '/location',
       name: 'location',
       builder: (context, state) => const LocationSelectionScreen(),
+    ),
+    //podcast route
+    GoRoute(
+      path: '/podcast',
+      name: 'podcast',
+      builder: (context, state) => const PodcastScreen(),
     ),
   ],
 );

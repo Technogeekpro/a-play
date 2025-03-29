@@ -1,6 +1,7 @@
 import 'package:a_play/data/models/event/event_model.dart';
 import 'package:a_play/presentation/pages/auth/signup.dart';
 import 'package:a_play/presentation/pages/navbar/bottom_navigation.dart';
+import 'package:a_play/presentation/pages/podcast/screens/podcast_screen.dart';
 import 'package:a_play/presentation/pages/profile/screens/profile_page.dart';
 import 'package:a_play/presentation/pages/search/search_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -109,6 +110,12 @@ final GoRouter router = GoRouter(
           events: (args['events'] as List<dynamic>).cast<EventModel>(),
         );
       },
+    ),
+    //Podcast Route
+    GoRoute(
+      path: '/podcast',
+      name: 'podcast',
+      builder: (context, state) => const PodcastScreen(),
     ),
   ],
 );

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:a_play/core/services/location_service.dart';
+import 'package:iconsax/iconsax.dart';
 
 class HomeAppBarSection extends ConsumerWidget {
   const HomeAppBarSection({Key? key}) : super(key: key);
@@ -30,7 +31,23 @@ class HomeAppBarSection extends ConsumerWidget {
           ),
 
           // Location display
-          _buildLocationDisplay(context, ref),
+         
+
+          // Right side icons
+          Row(
+            children: [
+              // Mic Icon for Podcasts
+              _buildLocationDisplay(context, ref),
+              IconButton(
+                icon: const Icon(
+                  Iconsax.microphone_2,
+                  color: Colors.white,
+                  size: 24,
+                ),
+                onPressed: () => context.push('/podcast'),
+              ),
+            ],
+          ),
         ],
       ),
     );

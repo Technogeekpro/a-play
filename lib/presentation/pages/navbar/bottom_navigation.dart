@@ -5,6 +5,8 @@ import 'package:a_play/presentation/pages/bookings/screens/bookings_page.dart';
 import 'package:a_play/presentation/pages/explore/screens/explore_page.dart';
 import 'package:a_play/presentation/pages/home/home_page.dart';
 import 'package:a_play/presentation/pages/feeds/feeds_page.dart';
+import 'package:a_play/presentation/pages/concierge/screens/concierge_page.dart';
+import 'package:a_play/presentation/theme/app_theme.dart';
 
 final navigationIndexProvider = StateProvider<int>((ref) => 0);
 
@@ -20,6 +22,7 @@ class _BottomNavigationState extends ConsumerState<BottomNavigation> {
     const HomePage(),
     const ExplorePage(),
     const BookingsPage(),
+    const ConciergePage(),
     const FeedsPage(),
   ];
 
@@ -27,70 +30,80 @@ class _BottomNavigationState extends ConsumerState<BottomNavigation> {
   Widget build(BuildContext context) {
     final currentIndex = ref.watch(navigationIndexProvider);
     final bottomPadding = MediaQuery.of(context).padding.bottom;
-    final navBarHeight = 56.0 + bottomPadding + 16.0;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          // Pages with bottom padding
-          Positioned.fill(
-            bottom: navBarHeight,
-            child: IndexedStack(
-              index: currentIndex,
-              children: _pages,
-            ),
+      body: IndexedStack(
+        index: currentIndex,
+        children: _pages,
+      ),
+      floatingActionButton: Container(
+        height: 64,
+        width: 64,
+        margin: const EdgeInsets.only(top: 30),
+        child: FloatingActionButton(
+          shape: const CircleBorder(),
+          elevation: 0,
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          child: Icon(
+            currentIndex == 0 ? Iconsax.home_25 : Iconsax.home_2,
+            size: 28,
+            color: Colors.white,
           ),
-
-          // Gradient Bottom Navigation Bar
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: navBarHeight,
-              color: Colors.black45,
-              child: SafeArea(
-                top: false,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _NavBarItem(
-                        icon: Iconsax.home_2,
-                        selectedIcon: Iconsax.home_25,
-                        label: 'Home',
-                        isSelected: currentIndex == 0,
-                        onTap: () => ref.read(navigationIndexProvider.notifier).state = 0,
-                      ),
-                      _NavBarItem(
-                        icon: Iconsax.discover_1,
-                        selectedIcon: Iconsax.discover5,
-                        label: 'Explore',
-                        isSelected: currentIndex == 1,
-                        onTap: () => ref.read(navigationIndexProvider.notifier).state = 1,
-                      ),
-                      _NavBarItem(
-                        icon: Iconsax.ticket,
-                        selectedIcon: Iconsax.ticket_star5,
-                        label: 'Bookings',
-                        isSelected: currentIndex == 2,
-                        onTap: () => ref.read(navigationIndexProvider.notifier).state = 2,
-                      ),
-                      _NavBarItem(
-                        icon: Iconsax.message,
-                        selectedIcon: Iconsax.message5,
-                        label: 'Feeds',
-                        isSelected: currentIndex == 3,
-                        onTap: () => ref.read(navigationIndexProvider.notifier).state = 3,
-                      ),
-                    ],
-                  ),
-                ),
+          onPressed: () => ref.read(navigationIndexProvider.notifier).state = 0,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 8,
+              offset: const Offset(0, -2),
+            ),
+          ],
+        ),
+        child: BottomAppBar(
+          height: 60 + bottomPadding,
+          padding: EdgeInsets.only(bottom: bottomPadding),
+          notchMargin: 8,
+          color: AppTheme.surfaceDark,
+          shape: const CircularNotchedRectangle(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _NavBarItem(
+                icon: Iconsax.discover_1,
+                selectedIcon: Iconsax.discover5,
+                label: 'Explore',
+                isSelected: currentIndex == 1,
+                onTap: () => ref.read(navigationIndexProvider.notifier).state = 1,
               ),
-            ),
+              _NavBarItem(
+                icon: Iconsax.ticket,
+                selectedIcon: Iconsax.ticket_star5,
+                label: 'Bookings',
+                isSelected: currentIndex == 2,
+                onTap: () => ref.read(navigationIndexProvider.notifier).state = 2,
+              ),
+              const SizedBox(width: 80), // Space for FAB
+              _NavBarItem(
+                icon: Iconsax.crown,
+                selectedIcon: Iconsax.crown5,
+                label: 'Concierge',
+                isSelected: currentIndex == 3,
+                onTap: () => ref.read(navigationIndexProvider.notifier).state = 3,
+              ),
+              _NavBarItem(
+                icon: Iconsax.message,
+                selectedIcon: Iconsax.message5,
+                label: 'Feeds',
+                isSelected: currentIndex == 4,
+                onTap: () => ref.read(navigationIndexProvider.notifier).state = 4,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -117,9 +130,10 @@ class _NavBarItem extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
       child: SizedBox(
-        height: 56,
+        width: 70,
+        height: 60,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               isSelected ? selectedIcon : icon,

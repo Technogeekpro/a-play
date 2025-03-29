@@ -63,13 +63,13 @@ class _ExplorePageState extends ConsumerState<ExplorePage> {
                   child: TextField(
                     controller: _searchController,
                     onChanged: controller.updateSearchQuery,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface,
+                    style: const TextStyle(
+                     // color: Theme.of(context).colorScheme.onSurface,
                     ),
                     decoration: InputDecoration(
                       hintText: 'Type name or location',
-                      hintStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      hintStyle: const TextStyle(
+                       // color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
                       prefixIcon: Icon(
                         Iconsax.search_normal,
